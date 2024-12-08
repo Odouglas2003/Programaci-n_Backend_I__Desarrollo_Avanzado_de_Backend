@@ -23,10 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // cargar conf rutas
 const UserRuter= require("./routes/products");
+const CarriRuter= require("./routes/carts");
 
 
 
 app.use("/api/producto",UserRuter);
+app.use("/api/carrito",CarriRuter);
 
 
 //pone servidor a escuchar peticiones http

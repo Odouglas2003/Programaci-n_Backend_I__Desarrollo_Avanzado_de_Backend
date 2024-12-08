@@ -21,66 +21,60 @@ const pruebaColab = async (req, res) => {
 };
 
 // Registro de usuarios
-// const register = async (req, res) => {
-//     try {
-//         const params = req.body;
+const register = async (req, res) => {
+    try {
+        const params = req.body;
 
-//         if (
-//             !params.id ||
-//             !params.first_name ||
-//             !params.last_name ||
-//             !params.email ||
-//             !params.proyectos ||
-//             !params.puesto_trabajo ||
-//             !params.rol ||
-//             !params.estado
-//         ) {
-//             return res.status(400).json({
-//                 status: "error",
-//                 message: "FALTAN DATOS POR ENVIAR",
-//             });
-//         }
+        if (
+            !params.id ||
+            !params.name ||
+            !params.description ||
+            !params.price ||
+            !params.stock ||
+            !params.image 
+        ) {
+            return res.status(400).json({
+                status: "error",
+                message: "FALTAN DATOS POR ENVIAR",
+            });
+        }
 
-//         const existingColab = await Colab.findOne({ email: params.email.toLowerCase() });
-//         if (existingColab) {
-//             return res.status(400).json({
-//                 status: "error",
-//                 message: "El usuario ya existe",
-//             });
-//         }
+        const existingColab = await Colab.findOne({ id: params.id });
+        if (existingColab) {
+            return res.status(400).json({
+                status: "error",
+                message: "El Id ya existe",
+            });
+        }
 
-//         console.log("Datos antes de guardar:", params);
+        console.log("Datos antes de guardar:", params);
 
-//         const newColab = new Colab({
-//             id: params.id,
-//             first_name: params.first_name,
-//             last_name: params.last_name,
-//             email: params.email.toLowerCase(),
-//             Proyectos: params.proyectos,
-//             "Puesto de Trabajo": params.puesto_trabajo,
-//             rol: params.rol,
-//             estado: params.estado,
-//             created_at: new Date(),
-//             delete_at: null,
-//         });
+        const newColab = new Colab({
+            id: params.id,
+            name: params.name,
+            description: params.description,
+            price: params.price,
+            stock: params.stock,
+            image: params.image,
+        });
 
-//         const savedColab = await newColab.save();
+        const savedColab = await newColab.save();
 
-//         console.log("Usuario guardado correctamente:", savedColab);
+        console.log("Usuario guardado correctamente:", savedColab);
 
-//         return res.status(200).json({
-//             status: "success",
-//             message: "Usuario registrado correctamente",
-//             Colab: savedColab,
-//         });
-//     } catch (error) {
-//         console.error("Error en el registro:", error);
-//         return res.status(500).json({
-//             status: "error",
-//             message: "Error en el servidor",
-//         });
-//     }
-// };
+        return res.status(200).json({
+            status: "success",
+            message: "Usuario registrado correctamente",
+            Colab: savedColab,
+        });
+    } catch (error) {
+        console.error("Error en el registro:", error);
+        return res.status(500).json({
+            status: "error",
+            message: "Error en el servidor",
+        });
+    }
+};
 
 // Editar un colaborador
 // const editColab = async (req, res) => {
@@ -168,7 +162,7 @@ const pruebaColab = async (req, res) => {
 // Exportar acciones
 module.exports = {
     pruebaColab,
-    // register,
+    register,
     // editColab,
     // Eliminar,
 };

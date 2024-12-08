@@ -5,7 +5,7 @@ const ColaController = require("../controllers/products")
 //definir rutas
 router.get("/Producto",ColaController.pruebaColab);
 
-// router.post("/register", ColaController.register);
+router.post("/register", ColaController.register);
 
 // router.put("/editar/:id", ColaController.editColab); 
 
