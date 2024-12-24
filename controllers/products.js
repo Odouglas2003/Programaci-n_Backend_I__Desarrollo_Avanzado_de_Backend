@@ -188,15 +188,6 @@ const Eliminar = async (req, res) => {
     }
 };
 
-module.exports = {
-    Eliminar,
-};
-
-
-
-
-
-
 
 // Exportar acciones
 module.exports = {
