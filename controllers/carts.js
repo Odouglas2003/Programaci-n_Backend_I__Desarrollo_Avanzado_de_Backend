@@ -60,10 +60,6 @@ const register = async (req, res) => {
     }
   };
   
-
-
-
-
 // Exportar acciones
 module.exports = {
     pruebaCarrito,

@@ -7,9 +7,11 @@ router.get("/Producto",ColaController.pruebaColab);
 
 router.post("/register", ColaController.register);
 
-// router.put("/editar/:id", ColaController.editColab); 
+router.get("/ordenar", ColaController.MayoraMenor);
 
-// router.post("/eliminar/:id", ColaController.Eliminar);
+router.put("/editar/:id", ColaController.editColab); 
+
+router.delete("/eliminar/:id", ColaController.Eliminar);
 
 
 

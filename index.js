@@ -11,7 +11,7 @@ connection();
 
 //crear sevidor
 const app= express();
-const puerto=3550;
+const puerto=8080;
 
 // configurar cors
 app.use(cors());
